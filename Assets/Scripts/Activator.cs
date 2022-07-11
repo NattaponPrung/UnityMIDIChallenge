@@ -6,7 +6,7 @@ public class Activator : MonoBehaviour
     SpriteRenderer sr;
     public KeyCode key;
     bool active = false;
-    GameObject note;
+    GameObject note,gm;
     Color old ;
     // Start is called before the first frame update
     void Awake()
@@ -17,6 +17,7 @@ public class Activator : MonoBehaviour
     
     void Start()
     {
+        gm = GameObject.Find("GameManager");
         old=sr.color;
     }
 
@@ -47,7 +48,7 @@ public class Activator : MonoBehaviour
 
     void AddScore()
     {
-        PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+100);
+        PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+gm.GetComponent<GameManager>().GetScore());
     }
 
     IEnumerator Pressed()

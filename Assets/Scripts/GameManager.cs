@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Note : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public float speed;
+    int multiplier=2;
+    int streak=0;
     // Start is called before the first frame update
-    
-     void Awake()
-    {
-        rb=GetComponent<Rigidbody2D>();
-    }
-
     void Start()
     {
-        rb.velocity=new Vector2(0,-speed);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    void OnTriggerEnter2D(Collider2D col){
+    }
+
+    public int GetScore(){
+        return 100*multiplier;
     }
 }
