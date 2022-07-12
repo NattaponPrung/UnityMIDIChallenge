@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
+    Rigidbody2D rb;
+    
     double timeInstantiated;
     public float assignedTime;
     void Start()
@@ -15,7 +17,7 @@ public class Note : MonoBehaviour
     void Update()
     {
         double timeSinceInstantiated = SongManager.GetAudioSourceTime() - timeInstantiated;
-        float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
+        float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 1));
 
         
         if (t > 1)
