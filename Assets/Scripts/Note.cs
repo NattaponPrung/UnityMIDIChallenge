@@ -14,12 +14,13 @@ public class Note : MonoBehaviour
     }
 
     // Update is called once per frame
+    // โน๊ตถูกสร้างจาก SongManager
     void Update()
     {
         double timeSinceInstantiated = SongManager.GetAudioSourceTime() - timeInstantiated;
         float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 1));
 
-        
+    //ทำลายโน๊ต
         if (t > 1)
         {
             Destroy(gameObject);

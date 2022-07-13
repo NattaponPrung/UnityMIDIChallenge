@@ -31,6 +31,7 @@ public class SongManager : MonoBehaviour
 
     public static MidiFile midiFile;
     // Start is called before the first frame update
+    // อ่าน midi จากเว็บหรือไฟล์
     void Start()
     {
         Instance = this;
@@ -44,6 +45,7 @@ public class SongManager : MonoBehaviour
         }
     }
 
+    //อ่าน midi จากเว็บ
     private IEnumerator ReadFromWebsite()
     {
         using (UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation))
@@ -66,11 +68,13 @@ public class SongManager : MonoBehaviour
         }
     }
 
+    //อ่านจากไฟล์
     private void ReadFromFile()
     {
         midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
         GetDataFromMidi();
     }
+    //รับข้อมูลจาก midi
     public void GetDataFromMidi()
     {
         var notes = midiFile.GetNotes();

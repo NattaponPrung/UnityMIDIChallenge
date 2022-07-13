@@ -20,6 +20,7 @@ public class Lane : MonoBehaviour
     {
         
     }
+    //เวลาเมื้อโน๊ตเริ่มแสดง
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
         foreach (var note in array)
@@ -50,36 +51,8 @@ public class Lane : MonoBehaviour
             double timeStamp = timeStamps[inputIndex];
             double marginOfError = SongManager.Instance.marginOfError;
             double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
-
-            if (Input.GetKeyDown(input))
-            {
-                if (Math.Abs(audioTime - timeStamp) < marginOfError)
-                {
-                    Hit();
-                    print($"Hit on {inputIndex} note");
-                    // Destroy(notes[inputIndex].gameObject);
-                    inputIndex++;
-                }
-                else
-                {
-                    print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
-                }
-            }
-            if (timeStamp + marginOfError <= audioTime)
-            {
-                Miss();
-                print($"Missed {inputIndex} note");
-                inputIndex++;
-            }
         }       
     
     }
-    private void Hit()
-    {
-        ScoreManager.Hit();
-    }
-    private void Miss()
-    {
-        ScoreManager.Miss();
-    }
+  
 }

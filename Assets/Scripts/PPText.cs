@@ -12,6 +12,7 @@ public class PPText : MonoBehaviour
         
     }
     // Update is called once per frame
+    // เปลี่ยน Text เพื่อนับคะแนน
     void Update()
     {
         GetComponent<Text>().text="SCORE:"+PlayerPrefs.GetInt(name)+"";
